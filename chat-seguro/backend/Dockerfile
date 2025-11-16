@@ -1,7 +1,17 @@
-FROM node:18
+FROM node:20-alpine
+
 WORKDIR /app
+
+# Copia package.json
 COPY package*.json ./
-RUN npm install
+
+# Instala SOLO dependencias de producción (no necesitas nodemon)
+RUN npm install --omit=dev
+
+# Copia el código
 COPY . .
+
 EXPOSE 3000
-CMD ["npm", "run", "dev"]
+
+# USA node DIRECTO (sin nodemon)
+CMD ["node", "src/server.js"]

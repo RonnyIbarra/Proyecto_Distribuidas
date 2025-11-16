@@ -1,6 +1,5 @@
-version: '3.8'
 services:
-  mongo:
+  mongo_db:
     image: mongo:7
     container_name: mongo_db
     ports:
@@ -8,7 +7,7 @@ services:
     volumes:
       - mongo-data:/data/db
 
-  redis:
+  redis_cache:
     image: redis:7-alpine
     container_name: redis_cache
     ports:
@@ -20,15 +19,16 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - MONGODB_URI=mongodb://mongo:27017/chatdb
-      - REDIS_URL=redis://redis:6379
+      - MONGODB_URI=mongodb://mongo_db:27017/chatdb
+      - REDIS_URL=redis://redis_cache:6379
       - JWT_SECRET=supersecreto2025_espe
       - ADMIN_USER=admin
       - ADMIN_PASS=admin123
+      - PORT=3000
     depends_on:
-      - mongo
-      - redis
-    restart: unless-stopped
+      - mongo_db
+      - redis_cache
+    restart: on-failure:3
 
   frontend:
     build: ./frontend
@@ -37,7 +37,7 @@ services:
       - "5173:5173"
     depends_on:
       - backend
-    restart: unless-stopped
+    restart: on-failure:3
 
 volumes:
   mongo-data:
