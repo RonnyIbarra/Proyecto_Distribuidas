@@ -1,0 +1,764 @@
+/* Auth Pages */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.auth-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-card h1 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+}
+
+.auth-form {
+  margin-bottom: 1rem;
+}
+
+.auth-card .btn-secondary {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Admin Panel */
+.admin-panel {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem 0 0 0;
+}
+
+.admin-header {
+  background: white;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+
+.admin-header h1 {
+  color: var(--primary);
+}
+
+.admin-header .btn-danger {
+  padding: 0.75rem 1.5rem;
+}
+
+.admin-content {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .admin-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.create-room-section,
+.rooms-list-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.create-room-section h2,
+.rooms-list-section h2 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.create-room-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-room-form .btn-primary {
+  width: 100%;
+  padding: 1rem;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.room-card {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--light);
+  transition: all 0.3s ease;
+}
+
+.room-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.room-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.room-type,
+.room-users {
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin-bottom: 0.5rem;
+}
+
+.room-id {
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-bottom: 1rem;
+}
+
+.room-id code {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-family: monospace;
+}
+
+.room-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.room-card .btn-secondary-small,
+.room-card .btn-danger-small {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.room-card .btn-secondary-small {
+  background: var(--primary);
+  color: white;
+}
+
+.room-card .btn-secondary-small:hover {
+  background: var(--primary-dark);
+  transform: scale(1.05);
+}
+
+.room-card .btn-danger-small {
+  background: var(--danger);
+  color: white;
+  width: auto;
+}
+
+.room-card .btn-danger-small:hover {
+  background: #e74c3c;
+}
+
+.no-rooms {
+  text-align: center;
+  color: var(--gray);
+  padding: 2rem;
+  font-style: italic;
+}
+
+/* Join Room Page */
+.join-room-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.join-header {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.join-header h1 {
+  color: var(--primary);
+}
+
+.join-header .btn-secondary {
+  padding: 0.75rem 1.5rem;
+}
+
+.join-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.available-rooms {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.available-rooms h2 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.available-rooms .rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.room-item {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+
+.room-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.room-item h3 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.room-item .room-type,
+.room-item .room-users {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.room-item .btn-primary {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.no-rooms-msg {
+  background: white;
+  padding: 3rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.no-rooms-msg p {
+  font-size: 1.1rem;
+  color: var(--gray);
+  margin-bottom: 0.5rem;
+}
+
+.join-form-section {
+  animation: slideIn 0.3s ease;
+}
+
+.join-form-section .btn-back {
+  margin-bottom: 1rem;
+}
+
+.join-form-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-lg);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.join-form-card h2 {
+  color: var(--primary);
+}
+
+.form-subtitle {
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+}
+
+.join-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.join-form .btn-primary {
+  width: 100%;
+  padding: 1rem;
+}
+
+/* Chat Room */
+.chat-room-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--light);
+}
+
+.chat-header {
+  background: white;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+
+.chat-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.chat-info h1 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.5rem;
+}
+
+.user-badge {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.chat-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .chat-main {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-sidebar {
+    display: none;
+  }
+}
+
+.chat-sidebar {
+  background: white;
+  border-right: 1px solid var(--light);
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.users-section,
+.files-section {
+  margin-bottom: 2rem;
+}
+
+.users-section h3,
+.files-section h3 {
+  color: var(--primary);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.users-list,
+.files-list {
+  list-style: none;
+}
+
+.user-item {
+  padding: 0.75rem;
+  background: var(--light);
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.user-status {
+  font-size: 0.8rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.file-item {
+  padding: 0.5rem;
+  background: var(--light);
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.file-item a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.file-item a:hover {
+  text-decoration: underline;
+}
+
+.file-item small {
+  display: block;
+  color: var(--gray);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.chat-messages-section {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.no-messages {
+  text-align: center;
+  color: var(--gray);
+  padding: 3rem;
+  opacity: 0.5;
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: var(--light);
+  border-radius: 0.75rem;
+  max-width: 70%;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message.own {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  align-self: flex-end;
+  max-width: 70%;
+}
+
+.message-author {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.message.own .message-author {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.message-content {
+  word-wrap: break-word;
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.message-time {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--gray);
+  margin-top: 0.5rem;
+}
+
+.message.own .message-time {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.typing-indicator {
+  padding: 1rem;
+  color: var(--gray);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.chat-footer {
+  background: white;
+  border-top: 1px solid var(--light);
+  padding: 1rem 2rem;
+}
+
+.message-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.message-input-wrapper {
+  flex: 1;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.message-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--light);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.message-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.file-upload-btn {
+  cursor: pointer;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--light);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.file-upload-btn:hover {
+  background: var(--light);
+  border-color: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .admin-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .auth-card {
+    max-width: 90%;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .admin-header h1 {
+    margin: 0;
+  }
+
+  .admin-header .btn-danger {
+    width: 100%;
+  }
+
+  .join-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .join-header h1 {
+    margin: 0;
+  }
+
+  .join-header .btn-secondary {
+    width: 100%;
+  }
+
+  .chat-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .chat-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chat-header .btn-danger {
+    width: 100%;
+  }
+
+  .message {
+    max-width: 90%;
+  }
+
+  .message.own {
+    max-width: 90%;
+  }
+}
+
+/* Share Room Page */
+.share-room-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+}
+
+.share-room-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.share-room-header {
+  margin-bottom: 2rem;
+}
+
+.share-room-header h1 {
+  color: var(--primary);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.share-room-header .subtitle {
+  color: var(--gray);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.share-room-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.share-room-form .form-group {
+  text-align: left;
+}
+
+.share-room-form .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.share-room-form .form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid var(--light);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.share-room-form .form-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.share-room-form .form-group small {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--gray);
+  font-size: 0.85rem;
+}
+
+.share-room-form .btn-primary {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.share-room-info {
+  background: #f0f4ff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.share-room-info .info-text {
+  color: var(--primary);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 480px) {
+  .share-room-card {
+    padding: 1.5rem;
+  }
+
+  .share-room-header h1 {
+    font-size: 1.5rem;
+  }
+}
