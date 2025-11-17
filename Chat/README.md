@@ -200,6 +200,7 @@ Cobertura mínima: 70%
 npm test
 npm test -- --coverage
 ```
+**![Image](https://github.com/user-attachments/assets/522a7ad5-a835-450e-910a-17bd404a98e4)**
 **![Image](https://github.com/user-attachments/assets/0485469e-d617-48b4-a03a-1c2287882e4b)**
 
 
