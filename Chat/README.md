@@ -15,7 +15,6 @@ Aplicativo web que permite la gestión de salas de conversación seguras y colab
 - ✅ Lista de usuarios conectados
 
 ## 🛠 Tecnologías Utilizadas
-**![Image](https://github.com/user-attachments/assets/80ceea9d-bc7c-4a77-9929-9bdf261e16c7)**
 ### Backend
 - **Node.js** - Entorno de ejecución
 - **Express** - Framework web
@@ -29,7 +28,7 @@ Aplicativo web que permite la gestión de salas de conversación seguras y colab
 - **React Router** - Navegación
 - **Socket.io Client** - Cliente WebSocket
 - **Axios** - Cliente HTTP
-
+**![Image](https://github.com/user-attachments/assets/80ceea9d-bc7c-4a77-9929-9bdf261e16c7)**
 ### Base de Datos
 - En memoria (producción usar MongoDB o PostgreSQL)
 
