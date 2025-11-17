@@ -15,7 +15,7 @@ Aplicativo web que permite la gestión de salas de conversación seguras y colab
 - ✅ Lista de usuarios conectados
 
 ## 🛠 Tecnologías Utilizadas
-
+**![Image](https://github.com/user-attachments/assets/80ceea9d-bc7c-4a77-9929-9bdf261e16c7)**
 ### Backend
 - **Node.js** - Entorno de ejecución
 - **Express** - Framework web
