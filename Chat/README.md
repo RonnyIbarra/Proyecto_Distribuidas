@@ -1,8 +1,8 @@
-# 🔐 Sistema de Chat en Tiempo Real con Salas Seguras
+# Sistema de Chat en Tiempo Real con Salas Seguras
 
 Sistema de chat moderno y seguro desarrollado para la Universidad ESPE - Carrera de Ingeniería en Software.
 
-## 📋 Descripción General
+##  Descripción General
 
 Aplicativo web que permite la gestión de salas de conversación seguras y colaborativas. Los administradores pueden crear salas con acceso controlado mediante PINs, y los usuarios se conectan mediante nicknames únicos. El sistema implementa:
 
@@ -33,7 +33,7 @@ Aplicativo web que permite la gestión de salas de conversación seguras y colab
 ### Base de Datos
 - En memoria (producción usar MongoDB o PostgreSQL)
 
-## 🚀 Instalación
+## Instalación
 
 ### Requisitos
 - Node.js >= 14.0
@@ -90,7 +90,7 @@ npm run build
 
 La aplicación estará disponible en `http://localhost:3000`
 
-## 📖 Uso
+## Uso
 
 ### 1. Panel de Administración
 
@@ -129,7 +129,7 @@ URL: http://localhost:3000/join
 - Descargar archivos compartidos
 - Salir de la sala
 
-## 📊 Requisitos Funcionales Implementados
+## Requisitos Funcionales Implementados
 
 ### 1. Autenticación del Administrador ✅
 - Login con usuario y contraseña
@@ -166,7 +166,7 @@ URL: http://localhost:3000/join
 - Broadcasting sin bloqueos
 - Escalable para 50+ usuarios por sala
 
-## 📈 Requisitos No Funcionales
+## Requisitos No Funcionales
 
 ### Tiempo Real ✅
 - Latencia < 1 segundo
@@ -186,7 +186,7 @@ URL: http://localhost:3000/join
 - Diseño adaptable a dispositivos móviles
 - Interfaz intuitiva
 
-## 🧪 Pruebas Unitarias
+##  Pruebas Unitarias
 
 Se incluyen pruebas para:
 - **AuthService** - Autenticación y JWT
@@ -204,7 +204,7 @@ npm test -- --coverage
 **![Image](https://github.com/user-attachments/assets/0485469e-d617-48b4-a03a-1c2287882e4b)**
 
 
-## 🏗 Diagrama de Arquitectura
+##  Diagrama de Arquitectura
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -262,7 +262,7 @@ npm test -- --coverage
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-## 📋 Diagrama de Secuencia - Login Administrador
+##  Diagrama de Secuencia - Login Administrador
 
 ```
 Admin                   Frontend                Backend
@@ -284,7 +284,7 @@ Admin                   Frontend                Backend
  │     (4) Token guardado en localStorage          │
 ```
 
-## 📋 Diagrama de Secuencia - Comunicación en Tiempo Real
+## Diagrama de Secuencia - Comunicación en Tiempo Real
 
 ```
 Usuario1                WebSocket              Usuario2
@@ -305,7 +305,7 @@ Usuario1                WebSocket              Usuario2
    │                        │                      │
 ```
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 Chat/
@@ -362,7 +362,7 @@ Chat/
 └── README.md
 ```
 
-## 🐳 Despliegue con Docker (Opcional)
+## Despliegue con Docker (Opcional)
 
 Crear archivos:
 
@@ -412,18 +412,18 @@ services:
       - backend
 ```
 
-## 🔒 Seguridad
+## Seguridad
 
-- ✅ Contraseñas hasheadas con bcrypt (rounds: 10)
-- ✅ PINs hasheados con bcrypt
-- ✅ JWT para autenticación
-- ✅ CORS configurado
-- ✅ Validación de entrada en cliente y servidor
-- ✅ Sesión única por dispositivo/IP
-- ✅ Límites en tamaño de archivo (10MB)
-- ✅ Validación de tipos MIME
+- Contraseñas hasheadas con bcrypt (rounds: 10)
+- PINs hasheados con bcrypt
+- JWT para autenticación
+- CORS configurado
+- Validación de entrada en cliente y servidor
+- Sesión única por dispositivo/IP
+- Límites en tamaño de archivo (10MB)
+- Validación de tipos MIME
 
-## 📊 Pruebas de Carga
+## Pruebas de Carga
 
 Para probar la escalabilidad con 50+ usuarios simultáneos:
 
@@ -432,7 +432,7 @@ Para probar la escalabilidad con 50+ usuarios simultáneos:
 artillery quick --count 100 --num 10 http://localhost:3000/chat/test-room
 ```
 
-## ✨ Características Futuras
+##  Características Futuras
 
 - [ ] Base de datos persistente (MongoDB/PostgreSQL)
 - [ ] Autenticación de usuarios
@@ -444,7 +444,7 @@ artillery quick --count 100 --num 10 http://localhost:3000/chat/test-room
 - [ ] Encriptación de mensajes
 - [ ] Roles de usuario
 
-## 📝 Licencia
+## Licencia
 
 MIT
 
