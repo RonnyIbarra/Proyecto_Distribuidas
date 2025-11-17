@@ -1,8 +1,8 @@
-# 🔐 Sistema de Chat en Tiempo Real con Salas Seguras
+# Sistema de Chat en Tiempo Real con Salas Seguras
 
 Sistema de chat moderno y seguro desarrollado para la Universidad ESPE - Carrera de Ingeniería en Software.
 
-## 📋 Descripción General
+##  Descripción General
 
 Aplicativo web que permite la gestión de salas de conversación seguras y colaborativas. Los administradores pueden crear salas con acceso controlado mediante PINs, y los usuarios se conectan mediante nicknames únicos. El sistema implementa:
 
@@ -13,9 +13,38 @@ Aplicativo web que permite la gestión de salas de conversación seguras y colab
 - ✅ Subida y visualización de archivos
 - ✅ Sesión única por dispositivo
 - ✅ Lista de usuarios conectados
+  
+# Lógica del Negocio
 
+Chat multi-sala seguro con verificación de PIN, nicknames únicos y límite de una sesión activa por dirección IP.
+
+## Flujo completo del sistema
+
+1. **Administrador** → Login (`admin` / `admin123`)
+2. **Crea sala** → Nombre + Tipo + PIN (≥4 dígitos) → Se genera ID único automático
+3. **Comparte** → Solo el ID + PIN (nadie más puede crear salas)
+4. **Usuario** → Ingresa ID de sala + PIN + Nickname
+5. **Verificaciones estrictas (en este orden exacto)**:
+   - PIN correcto
+   - Nickname único dentro de la sala
+   - IP del usuario no tiene sesión activa en ninguna sala (controlado con Redis)
+6. **Entrada permitida** → Chat en tiempo real vía WebSocket
+7. **Mensajería y archivos**:
+   - Mensajes de texto instantáneos
+   - Subida de archivos → Worker Thread realiza compresión automática a WebP → Almacenados en GridFS (MongoDB)
+8. **Control de sesión**:
+   - Solo 1 dispositivo por IP conectado al mismo tiempo
+   - Al conectar desde otro dispositivo con la misma IP, la sesión anterior se cierra automáticamente
+
+## Reglas de negocio clave
+- Las salas son privadas por defecto (requieren PIN)
+- Un mismo usuario (misma IP) no puede estar en dos salas ni con dos pestañas simultáneamente
+- Nicknames son únicos por sala, no globales
+- Los archivos siempre se comprimen a WebP para ahorrar ancho de banda y almacenamiento
+- No hay registro de usuarios: solo nickname + PIN + ID de sala
+
+¡Eso es toda la lógica del negocio en limpio y ordenado!
 ## 🛠 Tecnologías Utilizadas
-
 ### Backend
 - **Node.js** - Entorno de ejecución
 - **Express** - Framework web
@@ -29,11 +58,12 @@ Aplicativo web que permite la gestión de salas de conversación seguras y colab
 - **React Router** - Navegación
 - **Socket.io Client** - Cliente WebSocket
 - **Axios** - Cliente HTTP
-
+  
+**![Image](https://github.com/user-attachments/assets/80ceea9d-bc7c-4a77-9929-9bdf261e16c7)**
 ### Base de Datos
 - En memoria (producción usar MongoDB o PostgreSQL)
 
-## 🚀 Instalación
+## Instalación
 
 ### Requisitos
 - Node.js >= 14.0
@@ -90,7 +120,7 @@ npm run build
 
 La aplicación estará disponible en `http://localhost:3000`
 
-## 📖 Uso
+## Uso
 
 ### 1. Panel de Administración
 
@@ -129,7 +159,7 @@ URL: http://localhost:3000/join
 - Descargar archivos compartidos
 - Salir de la sala
 
-## 📊 Requisitos Funcionales Implementados
+## Requisitos Funcionales Implementados
 
 ### 1. Autenticación del Administrador ✅
 - Login con usuario y contraseña
@@ -166,7 +196,7 @@ URL: http://localhost:3000/join
 - Broadcasting sin bloqueos
 - Escalable para 50+ usuarios por sala
 
-## 📈 Requisitos No Funcionales
+## Requisitos No Funcionales
 
 ### Tiempo Real ✅
 - Latencia < 1 segundo
@@ -186,7 +216,7 @@ URL: http://localhost:3000/join
 - Diseño adaptable a dispositivos móviles
 - Interfaz intuitiva
 
-## 🧪 Pruebas Unitarias
+##  Pruebas Unitarias
 
 Se incluyen pruebas para:
 - **AuthService** - Autenticación y JWT
@@ -196,14 +226,15 @@ Se incluyen pruebas para:
 Cobertura mínima: 70%
 
 ```bash
-# Ejecutar pruebas
+###Ejecutar pruebas
 npm test
-
-# Pruebas con cobertura
 npm test -- --coverage
 ```
+**![Image](https://github.com/user-attachments/assets/522a7ad5-a835-450e-910a-17bd404a98e4)**
+**![Image](https://github.com/user-attachments/assets/0485469e-d617-48b4-a03a-1c2287882e4b)**
 
-## 🏗 Diagrama de Arquitectura
+
+##  Diagrama de Arquitectura
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -261,7 +292,7 @@ npm test -- --coverage
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-## 📋 Diagrama de Secuencia - Login Administrador
+##  Diagrama de Secuencia - Login Administrador
 
 ```
 Admin                   Frontend                Backend
@@ -283,7 +314,7 @@ Admin                   Frontend                Backend
  │     (4) Token guardado en localStorage          │
 ```
 
-## 📋 Diagrama de Secuencia - Comunicación en Tiempo Real
+## Diagrama de Secuencia - Comunicación en Tiempo Real
 
 ```
 Usuario1                WebSocket              Usuario2
@@ -304,7 +335,7 @@ Usuario1                WebSocket              Usuario2
    │                        │                      │
 ```
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 Chat/
@@ -361,7 +392,7 @@ Chat/
 └── README.md
 ```
 
-## 🐳 Despliegue con Docker (Opcional)
+## Despliegue con Docker (Opcional)
 
 Crear archivos:
 
@@ -411,18 +442,18 @@ services:
       - backend
 ```
 
-## 🔒 Seguridad
+## Seguridad
 
-- ✅ Contraseñas hasheadas con bcrypt (rounds: 10)
-- ✅ PINs hasheados con bcrypt
-- ✅ JWT para autenticación
-- ✅ CORS configurado
-- ✅ Validación de entrada en cliente y servidor
-- ✅ Sesión única por dispositivo/IP
-- ✅ Límites en tamaño de archivo (10MB)
-- ✅ Validación de tipos MIME
+- Contraseñas hasheadas con bcrypt (rounds: 10)
+- PINs hasheados con bcrypt
+- JWT para autenticación
+- CORS configurado
+- Validación de entrada en cliente y servidor
+- Sesión única por dispositivo/IP
+- Límites en tamaño de archivo (10MB)
+- Validación de tipos MIME
 
-## 📊 Pruebas de Carga
+## Pruebas de Carga
 
 Para probar la escalabilidad con 50+ usuarios simultáneos:
 
@@ -431,7 +462,7 @@ Para probar la escalabilidad con 50+ usuarios simultáneos:
 artillery quick --count 100 --num 10 http://localhost:3000/chat/test-room
 ```
 
-## ✨ Características Futuras
+##  Características Futuras
 
 - [ ] Base de datos persistente (MongoDB/PostgreSQL)
 - [ ] Autenticación de usuarios
@@ -443,7 +474,7 @@ artillery quick --count 100 --num 10 http://localhost:3000/chat/test-room
 - [ ] Encriptación de mensajes
 - [ ] Roles de usuario
 
-## 📝 Licencia
+## Licencia
 
 MIT
 
