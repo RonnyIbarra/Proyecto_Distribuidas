@@ -13,7 +13,37 @@ Aplicativo web que permite la gestión de salas de conversación seguras y colab
 - ✅ Subida y visualización de archivos
 - ✅ Sesión única por dispositivo
 - ✅ Lista de usuarios conectados
+  
+# Lógica del Negocio
 
+Chat multi-sala seguro con verificación de PIN, nicknames únicos y límite de una sesión activa por dirección IP.
+
+## Flujo completo del sistema
+
+1. **Administrador** → Login (`admin` / `admin123`)
+2. **Crea sala** → Nombre + Tipo + PIN (≥4 dígitos) → Se genera ID único automático
+3. **Comparte** → Solo el ID + PIN (nadie más puede crear salas)
+4. **Usuario** → Ingresa ID de sala + PIN + Nickname
+5. **Verificaciones estrictas (en este orden exacto)**:
+   - PIN correcto
+   - Nickname único dentro de la sala
+   - IP del usuario no tiene sesión activa en ninguna sala (controlado con Redis)
+6. **Entrada permitida** → Chat en tiempo real vía WebSocket
+7. **Mensajería y archivos**:
+   - Mensajes de texto instantáneos
+   - Subida de archivos → Worker Thread realiza compresión automática a WebP → Almacenados en GridFS (MongoDB)
+8. **Control de sesión**:
+   - Solo 1 dispositivo por IP conectado al mismo tiempo
+   - Al conectar desde otro dispositivo con la misma IP, la sesión anterior se cierra automáticamente
+
+## Reglas de negocio clave
+- Las salas son privadas por defecto (requieren PIN)
+- Un mismo usuario (misma IP) no puede estar en dos salas ni con dos pestañas simultáneamente
+- Nicknames son únicos por sala, no globales
+- Los archivos siempre se comprimen a WebP para ahorrar ancho de banda y almacenamiento
+- No hay registro de usuarios: solo nickname + PIN + ID de sala
+
+¡Eso es toda la lógica del negocio en limpio y ordenado!
 ## 🛠 Tecnologías Utilizadas
 ### Backend
 - **Node.js** - Entorno de ejecución
