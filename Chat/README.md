@@ -196,12 +196,12 @@ Se incluyen pruebas para:
 Cobertura mínima: 70%
 
 ```bash
-# Ejecutar pruebas
+###Ejecutar pruebas
 npm test
-**![Image](https://github.com/user-attachments/assets/0485469e-d617-48b4-a03a-1c2287882e4b)**
-# Pruebas con cobertura
 npm test -- --coverage
 ```
+**![Image](https://github.com/user-attachments/assets/0485469e-d617-48b4-a03a-1c2287882e4b)**
+
 
 ## 🏗 Diagrama de Arquitectura
 
