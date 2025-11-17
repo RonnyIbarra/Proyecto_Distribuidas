@@ -21,6 +21,9 @@ const io = socketIo(server, {
   }
 });
 
+// Exponer io en app locals para que rutas puedan emitir eventos
+app.locals.io = io;
+
 // Middleware
 app.use(cors({
   origin: process.env.CORS_ORIGIN || '*',
@@ -29,7 +32,13 @@ app.use(cors({
   optionsSuccessStatus: 200
 }));
 app.use(express.json());
-app.use(fileUpload());
+app.use(fileUpload({
+  limits: { fileSize: 10 * 1024 * 1024 },
+  useTempFiles: false,
+  abortOnLimit: true,
+  responseOnLimit: 'Archivo demasiado grande',
+  createParentPath: true
+}));
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 

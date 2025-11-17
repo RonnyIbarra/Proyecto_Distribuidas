@@ -396,6 +396,7 @@
 .users-list,
 .files-list {
   list-style: none;
+  padding: 0;
 }
 
 .user-item {
@@ -423,12 +424,51 @@
   }
 }
 
+.files-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
 .file-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255,255,255,0.02);
   padding: 0.5rem;
-  background: var(--light);
   border-radius: 0.5rem;
-  margin-bottom: 0.5rem;
+}
+
+.file-thumb-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.file-thumb {
+  width: 64px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.file-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-name {
+  color: var(--light);
   font-size: 0.9rem;
+}
+
+.file-author {
+  color: var(--gray);
+  font-size: 0.75rem;
 }
 
 .file-item a {
@@ -440,11 +480,41 @@
   text-decoration: underline;
 }
 
-.file-item small {
-  display: block;
-  color: var(--gray);
-  font-size: 0.8rem;
-  margin-top: 0.25rem;
+.file-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.6);
+  z-index: 2000;
+}
+
+.file-modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  padding: 0.5rem;
+}
+
+.file-modal-img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.file-modal-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
 }
 
 .chat-messages-section {
@@ -535,6 +605,22 @@
   background: white;
   border-top: 1px solid var(--light);
   padding: 1rem 2rem;
+}
+
+.upload-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--light);
+  border-radius: 2px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), #ff8a3d);
+  width: 0%;
+  transition: width 0.2s ease;
 }
 
 .message-form {
